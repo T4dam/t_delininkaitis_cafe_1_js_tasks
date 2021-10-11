@@ -168,10 +168,7 @@ console.group(
 );
 console.log("---");
 {
-  console.log({
-    numbers,
-    result: numbers.forEach((el, i) => console.log(`${i}=>${el}`)),
-  });
+  numbers.forEach((el, i) => console.log(`${i}=>${el}`));
 }
 console.log("---");
 console.groupEnd();

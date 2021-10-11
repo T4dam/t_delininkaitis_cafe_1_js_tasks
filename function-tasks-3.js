@@ -144,7 +144,7 @@ console.group(
     for (let i = 0; i < str.length; i++) {
       strLength = strLength + 1;
     }
-    console.log(strLength);
+    return strLength;
   };
 
   console.log("---");
@@ -804,7 +804,7 @@ console.group(
   };
 
   console.log("---");
-  strReverse("bububu");
+
   strReverse("viens du trys");
   strReverse("as tave myliu");
   strReverse("Bairis seniuk");
@@ -854,9 +854,8 @@ console.log();
 console.group("30. Sukurkite funkciją, kuri taiso pastraipos klaidas");
 {
   function capitalizeFirstWord(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLocaleLowerCase();
+    return str[0].toUpperCase() + str.substring(1);
   }
-
   function splitIntoSentences(paragraph) {
     const result = {
       sentences: [],
@@ -865,7 +864,7 @@ console.group("30. Sukurkite funkciją, kuri taiso pastraipos klaidas");
     let sentenceStart = 0;
     for (let i = 0; i < paragraph.length; i++) {
       const symbol = paragraph[i];
-      if ([".", "!", "?"].includes(symbol)) {
+      if ([".", "?", "!"].includes(symbol)) {
         const sentence = capitalizeFirstWord(
           paragraph.slice(sentenceStart, i).trim()
         );
@@ -874,21 +873,18 @@ console.group("30. Sukurkite funkciją, kuri taiso pastraipos klaidas");
         sentenceStart = i + 1;
       }
     }
-
     return result;
   }
-
   function reduceEmptySpaces(str) {
-    for (let i = str.length; i >= 0; i--) {
+    for (let i = str.length - 1; i >= 0; i--) {
       const letter = str[i];
-      const previousLetter = str[i - 1];
-      if ([" ", ","].includes(letter) && previousLetter === " ") {
-        str = str.slice(0, previousLetter) + str.slice(letter);
+      const prevLetter = str[i - 1];
+      if ([" ", ","].includes(letter) && prevLetter === " ") {
+        str = str.slice(0, i - 1) + str.slice(i);
       }
     }
     return str;
   }
-
   function fixParagraph(paragraph) {
     const { sentences, separators } = splitIntoSentences(paragraph);
     let result = "";
@@ -903,6 +899,7 @@ console.group("30. Sukurkite funkciją, kuri taiso pastraipos klaidas");
   const fixedParagraph = fixParagraph(paragraph);
   console.log(paragraph);
   console.log(fixedParagraph);
+
   console.log("---");
 }
 console.groupEnd();

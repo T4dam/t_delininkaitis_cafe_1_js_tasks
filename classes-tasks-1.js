@@ -50,13 +50,13 @@ class Automobilis {
   }
 
   increasePrice(amount) {
-    return this.price + amount;
+    return (this.price += amount);
   }
 }
 
-const car1 = new Automobilis("Lucid", "Air", 80);
-const car2 = new Automobilis("Porche", "Tycan", 100);
-const car3 = new Automobilis("Tesla", "Model 3", 68);
+const car1 = new Automobilis("Lucid", "Air", 80000);
+const car2 = new Automobilis("Porche", "Tycan", 100000);
+const car3 = new Automobilis("Tesla", "Model 3", 58000);
 
 console.log(car1);
 console.log(car2);
@@ -78,10 +78,7 @@ console.log(car1.price);
 console.log(car2.price);
 console.log(car3.price);
 
-console.log(car1.increasePrice(100));
-console.log(car2.increasePrice(100));
-console.log(car3.increasePrice(100));
+car1.increasePrice(100);
+car2.increasePrice(100);
+car3.increasePrice(100);
 console.log(allCars);
-// allCars.forEach((cars) => cars.increasePrice(100));
-// console.table(allCars);
-console.table(allCars);
